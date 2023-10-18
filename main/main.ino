@@ -10,8 +10,8 @@
 // Define Servo 
 const byte servoPin = 11;
 Servo servo;
-const byte servoMin=10;
-const byte servoMax=170;
+const byte servoMin=46;
+const byte servoMax=135;
 
 int currentSteering;
 
@@ -34,6 +34,7 @@ void setup() {
   motor.attach(motorPin);
   currentSpeed=0;
   setSpeed(currentSpeed);
+  
 
   // Start serial communication
   Serial.begin(9600);
@@ -66,7 +67,7 @@ void setSteering(int steering) {
     return;
   }
   // Map the value into servo degrees
-  const int servoAngle = map(steering, -100, 100, servoMin, servoMax);
+  const int servoAngle = map(steering, 100, -100, servoMin, servoMax);
   servo.write(servoAngle);
   return;
 }
